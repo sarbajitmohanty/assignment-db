@@ -1,12 +1,16 @@
 import express from "express";
 import mongoose from "mongoose";
 
+import collegeRoutes from "./routes/colleges.js";
+
 const app = express();
 dotenv.config();
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+app.use("/colleges", collegeRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello dorabhai API");
